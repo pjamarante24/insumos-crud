@@ -18,7 +18,7 @@ export const InsumosTable = ({ insumos }: { insumos: Insumo[] }) => {
       </thead>
       <tbody>
         {insumos.map((insumo) => (
-          <InsumosTableItem insumo={insumo} />
+          <InsumosTableItem key={insumo._id} insumo={insumo} />
         ))}
       </tbody>
     </table>
@@ -29,7 +29,7 @@ export const InsumosTable = ({ insumos }: { insumos: Insumo[] }) => {
 // Muestra un insumo en la tabla con sus acciones modificar o eliminar
 const InsumosTableItem = ({ insumo }: { insumo: Insumo }) => {
   return (
-    <tr key={insumo._id}>
+    <tr>
       <th scope="row">{insumo.nombre}</th>
       <td>{insumo.unidad}</td>
       <td>{currencyFormat.format(insumo.costoUnitario)}</td>

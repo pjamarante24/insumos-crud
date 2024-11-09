@@ -15,36 +15,41 @@ import ErrorPage from "./routes/error-page";
 import "./index.css";
 
 // Crea el router con las rutas de la aplicación
-const router = createBrowserRouter([
+const router = createBrowserRouter(
+  [
+    {
+      path: "/",
+      element: <Root />,
+      errorElement: <ErrorPage />,
+      children: [
+        {
+          index: true,
+          element: <Insumos />,
+          loader: insumosLoader,
+        },
+        {
+          path: "insumos/:id/edit",
+          element: <Insumo />,
+          loader: insumoLoader,
+          action: editInsumoAction,
+        },
+        {
+          path: "insumos/new",
+          element: <Insumo />,
+          loader: insumoLoader,
+          action: createInsumoAction,
+        },
+        {
+          path: "insumos/:id/delete",
+          action: insumoDestroyAction,
+        },
+      ],
+    },
+  ],
   {
-    path: "/",
-    element: <Root />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        index: true,
-        element: <Insumos />,
-        loader: insumosLoader,
-      },
-      {
-        path: "insumos/:id/edit",
-        element: <Insumo />,
-        loader: insumoLoader,
-        action: editInsumoAction,
-      },
-      {
-        path: "insumos/new",
-        element: <Insumo />,
-        loader: insumoLoader,
-        action: createInsumoAction,
-      },
-      {
-        path: "insumos/:id/delete",
-        action: insumoDestroyAction,
-      },
-    ],
-  },
-]);
+    basename: import.meta.env.BASE_URL,
+  }
+);
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

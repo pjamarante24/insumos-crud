@@ -8,7 +8,9 @@ const PORT = 3000;
 
 const server = express();
 server.use(express.json());
-server.use(cors({ origin: "http://localhost:5173" }));
+server.use(
+  cors({ origin: ["http://localhost:5173", "https://pjamarante24.github.io"] })
+);
 
 initializeClient();
 setupRoutes(server);
