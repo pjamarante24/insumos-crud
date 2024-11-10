@@ -4,7 +4,7 @@ import { setupRoutes } from "./routes/index.ts";
 import { initializeClient } from "./gateway/db.ts";
 
 const HOSTNAME = "127.0.0.1";
-const PORT = 3000;
+const PORT = process.env.PORT ?? 8080;
 
 const server = express();
 server.use(express.json());
@@ -15,6 +15,6 @@ server.use(
 initializeClient();
 setupRoutes(server);
 
-server.listen(PORT, HOSTNAME, () => {
+server.listen(+PORT as number, HOSTNAME, () => {
   console.log(`Server running at http://${HOSTNAME}:${PORT}/`);
 });

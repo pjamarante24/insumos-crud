@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node --watch --experimental-strip-types .",
-    "migrate": "node --experimental-strip-types scripts/migrate.ts"
+    "migrate": "node --experimental-strip-types scripts/migrate.ts",
+    "start": "node --experimental-strip-types ."
   },
   "author": "",
   "license": "ISC",
