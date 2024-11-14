@@ -3,7 +3,7 @@ import cors from "cors";
 import { setupRoutes } from "./routes/index.ts";
 import { initializeClient } from "./gateway/db.ts";
 
-const HOSTNAME = "127.0.0.1";
+const HOSTNAME = process.env.HOSTNAME ?? "127.0.0.1";
 const PORT = process.env.PORT ?? 8080;
 
 const server = express();
