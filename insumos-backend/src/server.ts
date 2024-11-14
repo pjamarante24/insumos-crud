@@ -9,7 +9,13 @@ const PORT = process.env.PORT ?? 8080;
 const server = express();
 server.use(express.json());
 server.use(
-  cors({ origin: ["http://localhost:5173", "https://pjamarante24.github.io"] })
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://pjamarante24.github.io",
+      "https://insumos-web.onrender.com",
+    ],
+  })
 );
 
 initializeClient();
